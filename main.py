@@ -154,19 +154,80 @@
 # cv2.waitKey()
 # cv2.destroyAllWindows()
 
+# import cv2
+# img=cv2.imread("./pic/Lena.bmp",0)
+# #测试读取、修改单个像素值
+# print("读取像素点 img.item(3,2)=",img.item(3,2))
+# # img.itemset((3,2),255)
+# img[3,2] = 255
+# print("修改后像素点 img.item(3,2)=",img.item(3,2))
+# #测试修改一个区域的像素值
+# cv2.imshow("before",img)
+# for i in range(10,100):
+#     for j in range(80,100):
+#         # img.itemset((i,j),0)
+#         img[i,j] = 255
+# cv2.imshow("after",img)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+# # 提取 lena 脸部信息
+# import cv2
+# a=cv2.imread("./pic/Lena.bmp",cv2.IMREAD_UNCHANGED)
+# face=a[220:400,250:350]
+# cv2.imshow("original",a)
+# cv2.imshow("face",face)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+# # 对lena脸部打码
+# import cv2
+# import numpy as np
+#
+# a = cv2.imread("./pic/Lena.bmp", cv2.IMREAD_UNCHANGED)
+# cv2.imshow("original", a)
+# face = np.random.randint(0, 256, [180, 100,3])
+# a[220:400, 250:350] = face
+# cv2.imshow("result", a)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+# import cv2
+# lena = cv2.imread("./pic/lena.bmp",cv2.IMREAD_UNCHANGED)
+# dollar = cv2.imread("./pic/dollar.bmp",cv2.IMREAD_UNCHANGED)
+# cv2.imshow("lena",lena)
+# cv2.imshow("dollar",dollar)
+# face = lena[220:400,250:350]
+# dollar[160:340,200:300] = face
+# cv2.imshow("result",dollar)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+# import cv2
+# lena = cv2.imread("./pic/lena512.bmp",cv2.IMREAD_UNCHANGED)
+# dollar = cv2.imread("./pic/dollar.bmp",cv2.IMREAD_UNCHANGED)
+# cv2.imshow("lena",lena)
+# cv2.imshow("dollar",dollar)
+# print(dollar)
+# face=lena[220:400,250:350]
+# dollar[160:340,200:300]=face
+# cv2.imshow("result",dollar)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
 import cv2
-img=cv2.imread("./pic/Lena.bmp",0)
-#测试读取、修改单个像素值
-print("读取像素点 img.item(3,2)=",img.item(3,2))
-# img.itemset((3,2),255)
-img[3,2] = 255
-print("修改后像素点 img.item(3,2)=",img.item(3,2))
-#测试修改一个区域的像素值
-cv2.imshow("before",img)
-for i in range(10,100):
-    for j in range(80,100):
-        # img.itemset((i,j),0)
-        img[i,j] = 255
-cv2.imshow("after",img)
+
+lena = cv2.imread("./pic/lenacolor.png")
+cv2.imshow("lena", lena)
+b = lena[:, :, 0]
+g = lena[:, :, 1]
+r = lena[:, :, 2]
+cv2.imshow("b", b)
+cv2.imshow("g", g)
+cv2.imshow("r", r)
+lena[:, :0] = 0
+cv2.imshow("lena b 0", lena)
+lena[:, :1] = 0
+cv2.imshow("lena b 0 g 0", lena)
 cv2.waitKey()
 cv2.destroyAllWindows()
