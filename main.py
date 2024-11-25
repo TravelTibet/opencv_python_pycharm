@@ -99,7 +99,7 @@
 # cv2.destroyAllWindows()
 
 # import cv2
-# img = cv2.imread("./pic/Lena.bmp")
+# img = cv2.imread("./pic/lena.bmp")
 # cv2.imshow("before", img)
 # print("访问 img[0,0]=", img[0, 0])
 # print("访问 img[0,0,0]=", img[0, 0, 0])
@@ -155,7 +155,7 @@
 # cv2.destroyAllWindows()
 
 # import cv2
-# img=cv2.imread("./pic/Lena.bmp",0)
+# img=cv2.imread("./pic/lena.bmp",0)
 # #测试读取、修改单个像素值
 # print("读取像素点 img.item(3,2)=",img.item(3,2))
 # # img.itemset((3,2),255)
@@ -173,7 +173,7 @@
 
 # # 提取 lena 脸部信息
 # import cv2
-# a=cv2.imread("./pic/Lena.bmp",cv2.IMREAD_UNCHANGED)
+# a=cv2.imread("./pic/lena.bmp",cv2.IMREAD_UNCHANGED)
 # face=a[220:400,250:350]
 # cv2.imshow("original",a)
 # cv2.imshow("face",face)
@@ -184,7 +184,7 @@
 # import cv2
 # import numpy as np
 #
-# a = cv2.imread("./pic/Lena.bmp", cv2.IMREAD_UNCHANGED)
+# a = cv2.imread("./pic/lena.bmp", cv2.IMREAD_UNCHANGED)
 # cv2.imshow("original", a)
 # face = np.random.randint(0, 256, [180, 100,3])
 # a[220:400, 250:350] = face
@@ -215,19 +215,68 @@
 # cv2.waitKey()
 # cv2.destroyAllWindows()
 
-import cv2
+# import cv2
+#
+# lena = cv2.imread("./pic/lenacolor.png")
+# cv2.imshow("lena", lena)
+# b = lena[:, :, 0]
+# g = lena[:, :, 1]
+# r = lena[:, :, 2]
+# cv2.imshow("b", b)
+# cv2.imshow("g", g)
+# cv2.imshow("r", r)
+# lena[:, :, 0] = 0
+# cv2.imshow("lena b 0", lena)
+# lena[:, :, 1] = 0
+# cv2.imshow("lena b 0 g 0", lena)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
 
-lena = cv2.imread("./pic/lenacolor.png")
-cv2.imshow("lena", lena)
-b = lena[:, :, 0]
-g = lena[:, :, 1]
-r = lena[:, :, 2]
-cv2.imshow("b", b)
-cv2.imshow("g", g)
-cv2.imshow("r", r)
-lena[:, :0] = 0
-cv2.imshow("lena b 0", lena)
-lena[:, :1] = 0
-cv2.imshow("lena b 0 g 0", lena)
-cv2.waitKey()
-cv2.destroyAllWindows()
+# import cv2
+# lena = cv2.imread("./pic/lenacolor.png")
+# cv2.imshow("lena1", lena)
+# b = lena[:, :, 0]
+# g = lena[:, :, 1]
+# r = lena[:, :, 2]
+# cv2.imshow("b", b)
+# cv2.imshow("g", g)
+# cv2.imshow("r", r)
+# lena[:, :, 0] = 0
+# cv2.imshow("lenab0", lena)
+# lena[:, :, 1] = 0
+# cv2.imshow("lenab0g0", lena)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+# import cv2
+#
+# lena = cv2.imread("pic/lena.bmp")
+# b, g, r = cv2.split(lena)
+# cv2.imshow("B",b)
+# cv2.imshow("G",g)
+# cv2.imshow("R",r)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+# import cv2
+# lena=cv2.imread("pic/lena.bmp")
+# b,g,r=cv2.split(lena)
+# bgr=cv2.merge([b,g,r])
+# rgb=cv2.merge([r,g,b])
+# cv2.imshow("lena",lena)
+# cv2.imshow("bgr",bgr)
+# cv2.imshow("rgb",rgb)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+import cv2
+gray=cv2.imread("./pic/lena.tif",0)
+color=cv2.imread("./pic/lena.bmp")
+print("图像 gray 属性：")
+print("gray.shape=",gray.shape)
+print("gray.size=",gray.size)
+print("gray.dtype=",gray.dtype)
+print("图像 color 属性：")
+print("color.shape=",color.shape)
+print("color.size=",color.size)
+print("color.dtype=",color.dtype)
