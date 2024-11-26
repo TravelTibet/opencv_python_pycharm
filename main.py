@@ -513,4 +513,5 @@
 # cv2.waitKey()
 # cv2.destroyAllWindows()
 
-# chaptet 8 ending
+# chapter 8 ending
+
