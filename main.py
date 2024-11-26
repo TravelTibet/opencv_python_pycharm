@@ -269,14 +269,105 @@
 # cv2.waitKey()
 # cv2.destroyAllWindows()
 
+# import cv2
+# gray=cv2.imread("./pic/lena.tif",0)
+# color=cv2.imread("./pic/lena.bmp")
+# print("图像 gray 属性：")
+# print("gray.shape=",gray.shape)
+# print("gray.size=",gray.size)
+# print("gray.dtype=",gray.dtype)
+# print("图像 color 属性：")
+# print("color.shape=",color.shape)
+# print("color.size=",color.size)
+# print("color.dtype=",color.dtype)
+
+
+# import cv2
+# import numpy as np
+# a=cv2.imread("pic/lena.tif", 0)
+# b=np.zeros(a.shape,dtype=np.uint8)
+# b[100:400,200:400]=255
+# b[100:500,100:200]=255
+# c=cv2.bitwise_and(a,b)
+# cv2.imshow("a",a)
+# cv2.imshow("b",b)
+# cv2.imshow("c",c)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+# import cv2
+# import numpy as np
+#
+# a = cv2.imread("./pic/lena.bmp", 1) # 3 通道
+# b = np.zeros(a.shape, dtype=np.uint8)
+# b[100:400, 200:400] = 255
+# b[100:500, 100:200] = 255
+# c = cv2.bitwise_and(a, b)
+# print("a.shape = ", a.shape)
+# print("b.shape = ", b.shape)
+# cv2.imshow("a", a)
+# cv2.imshow("b", b)
+# cv2.imshow("c", c)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+# import numpy as np
+#
+# lena = cv2.imread("./pic/lena.tif", 0)  # 灰度图
+# cv2.imshow("lena", lena)
+# r, c = lena.shape
+# x = np.zeros((r, c, 8), dtype=np.uint8)
+# for i in range(8):
+#     x[:, :, i] = 2 ** i
+# r = np.zeros((r, c, 8), dtype=np.uint8)
+# for i in range(8):
+#     r[:, :, i] = cv2.bitwise_and(lena, x[:, :, i])
+#     mask = (r[:, :, i] > 0)
+#     r[mask] = 255
+#     cv2.imshow(str(i), r[:, :, i])
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+# import numpy as np
+#
+# lena = cv2.imread("./pic/lena.tif", 0)
+# r, c = lena.shape
+# key = np.random.randint(0, 256, size=[r, c], dtype=np.uint8)
+# # key = cv2.imread("./pic/lena.bmp",0)
+# encryption = cv2.bitwise_xor(lena,key)
+# decryption = cv2.bitwise_xor(encryption,key)
+# cv2.imshow("lena",lena)
+# cv2.imshow("key",key)
+# cv2.imshow("encryption",encryption)
+# cv2.imshow("decryption",decryption)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
 import cv2
-gray=cv2.imread("./pic/lena.tif",0)
-color=cv2.imread("./pic/lena.bmp")
-print("图像 gray 属性：")
-print("gray.shape=",gray.shape)
-print("gray.size=",gray.size)
-print("gray.dtype=",gray.dtype)
-print("图像 color 属性：")
-print("color.shape=",color.shape)
-print("color.size=",color.size)
-print("color.dtype=",color.dtype)
+import numpy as np
+
+lena = cv2.imread("./pic/lena.tif", 0)
+watermark = cv2.imread("./pic/watermark.bmp", 0)
+w = watermark[:, :] > 0  # w 是存放bool值的矩阵
+watermark[w] = 1  # 二值化处理
+r, c = lena.shape
+t254 = np.ones((r, c), dtype=np.uint8) * 254    # 对最后一位 置0
+lenaH7 = cv2.bitwise_and(lena,t254)
+e = cv2.bitwise_or(lenaH7,watermark)
+t1 = np.ones((r,c),dtype = np.uint8)
+wm=cv2.bitwise_and(e,t1)
+print(wm)
+w = wm[:,:] > 0
+wm[w] = 255
+cv2.imshow("lena",lena)
+cv2.imshow("watermark",watermark * 255)
+cv2.imshow("e",e)
+cv2.imshow("wm",wm)
+cv2.waitKey()
+cv2.destroyAllWindows()
+
