@@ -348,26 +348,143 @@
 # cv2.destroyAllWindows()
 
 
-import cv2
-import numpy as np
+# import cv2
+# import numpy as np
+#
+# lena = cv2.imread("./pic/lena.tif", 0)
+# watermark = cv2.imread("./pic/watermark.bmp", 0)
+# w = watermark[:, :] > 0  # w 是存放bool值的矩阵
+# watermark[w] = 1  # 二值化处理
+# r, c = lena.shape
+# t254 = np.ones((r, c), dtype=np.uint8) * 254    # 对最后一位 置0
+# lenaH7 = cv2.bitwise_and(lena,t254)
+# e = cv2.bitwise_or(lenaH7,watermark)
+# t1 = np.ones((r,c),dtype = np.uint8)
+# wm=cv2.bitwise_and(e,t1)
+# print(wm)
+# w = wm[:,:] > 0
+# wm[w] = 255
+# cv2.imshow("lena",lena)
+# cv2.imshow("watermark",watermark * 255)
+# cv2.imshow("e",e)
+# cv2.imshow("wm",wm)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
 
-lena = cv2.imread("./pic/lena.tif", 0)
-watermark = cv2.imread("./pic/watermark.bmp", 0)
-w = watermark[:, :] > 0  # w 是存放bool值的矩阵
-watermark[w] = 1  # 二值化处理
-r, c = lena.shape
-t254 = np.ones((r, c), dtype=np.uint8) * 254    # 对最后一位 置0
-lenaH7 = cv2.bitwise_and(lena,t254)
-e = cv2.bitwise_or(lenaH7,watermark)
-t1 = np.ones((r,c),dtype = np.uint8)
-wm=cv2.bitwise_and(e,t1)
-print(wm)
-w = wm[:,:] > 0
-wm[w] = 255
-cv2.imshow("lena",lena)
-cv2.imshow("watermark",watermark * 255)
-cv2.imshow("e",e)
-cv2.imshow("wm",wm)
-cv2.waitKey()
-cv2.destroyAllWindows()
+
+# chapter 04 start
+
+# import cv2
+# import numpy as np
+#
+# img = np.random.randint(0, 256, size=[2, 4], dtype=np.uint8)
+# rst = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
+# print("img=\n", img)
+# print("rst=\n", rst)
+
+
+# import cv2
+#
+# lena = cv2.imread("./pic/lenacolor.png")
+# gray = cv2.cvtColor(lena, cv2.COLOR_BGR2GRAY)
+# rgb = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+# # ==========打印 shape============
+# print("lena.shape=", lena.shape)
+# print("gray.shape=", gray.shape)
+# print("rgb.shape=", rgb.shape)
+# # ==========显示效果============
+# cv2.imshow("lena", lena)
+# cv2.imshow("gray", gray)
+# cv2.imshow("rgb", rgb)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+# lena = cv2.imread("./pic/lenacolor.png")
+# rgb = cv2.cvtColor(lena,cv2.COLOR_BGR2RGB)
+# cv2.imshow("lena",lena)
+# cv2.imshow("rgb",rgb)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+# import numpy as np
+#
+# imgBlue = np.zeros([1, 1, 3], dtype=np.uint8)
+# imgBlue[0, 0, 0] = 255
+# Blue = imgBlue
+# BlueHSV = cv2.cvtColor(Blue, cv2.COLOR_BGR2HSV)
+# print("Blue =\n", Blue)
+# print("BlueHSV =\n", BlueHSV)
+# imgGreen = np.zeros([1, 1, 3], dtype=np.uint8)
+# imgGreen[0, 0, 1] = 255
+# Green = imgGreen
+# GreenHSV = cv2.cvtColor(Green, cv2.COLOR_BGR2HSV)
+# print("Green=\n", Green)
+# print("GreenHSV=\n", GreenHSV)
+# # =========测试一下 OpenCV 中红色的 HSV 模式值=============
+# imgRed = np.zeros([1, 1, 3], dtype=np.uint8)
+# imgRed[0, 0, 2] = 255
+# Red = imgRed
+# RedHSV = cv2.cvtColor(Red, cv2.COLOR_BGR2HSV)
+# print("Red=\n", Red)
+# print("RedHSV=\n", RedHSV)
+
+
+# chapter 6 start
+
+# import cv2
+# import numpy as np
+#
+# img = np.random.randint(0, 256, size=[4, 5], dtype=np.uint8)
+# t, rst = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+# print("img = \n", img)
+# print("t = ", t)
+# print("res = \n", rst)
+
+
+# import cv2
+#
+# img = cv2.imread("./pic/lena.tif")
+# t, rst = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+# cv2.imshow("img", img)
+# cv2.imshow("rst", rst)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+#
+# img = cv2.imread("./pic/computer.jpg", 0)
+# t1, thd = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+# print("t1 = ", t1)
+# # t1, thd = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+# athdMean = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 5, 3)
+# athdGAUS = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 5, 3)
+# cv2.imshow("img", img)
+# cv2.imshow("thd", thd)
+# cv2.imshow("athdMene", athdMean)
+# cv2.imshow("athdGAUS", athdGAUS)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+#
+# img = cv2.imread("./pic/tiffany.bmp", 0)
+# # img = cv2.imread("./pic/airfield2.bmp", 0)
+# t1, thd = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+# t2, otsu = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+# print("t2 = ", t2)
+# cv2.imshow("img", img)
+# cv2.imshow("thd", thd)
+# cv2.imshow("otsu", otsu)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# chapter 6 ending
+
 
