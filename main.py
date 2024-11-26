@@ -488,3 +488,30 @@
 # chapter 6 ending
 
 
+# chapter 8 start
+
+# import cv2
+# import numpy as np
+#
+# o = cv2.imread("./pic/erode.bmp", cv2.IMREAD_UNCHANGED)  # 返回原始图像。alpha通道不会被忽略，如果有的话。
+# kernel = np.ones((5, 5), np.uint8)
+# erosion = cv2.erode(o, kernel)
+# cv2.imshow("orriginal", o)
+# cv2.imshow("erosion", erosion)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+# import numpy as np
+#
+# o = cv2.imread("./pic/dilation.bmp", cv2.IMREAD_UNCHANGED)
+# kernel = np.ones((5, 5), np.uint8)
+# dilation = cv2.dilate(o, kernel, iterations=9)
+# cv2.imshow("original", o)
+# cv2.imshow("dilation", dilation)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+# chapter 8 ending
+# chapter 9 pass
