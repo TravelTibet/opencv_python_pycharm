@@ -607,19 +607,166 @@
 # cv2.destroyAllWindows()
 
 
-import cv2
-import numpy as np
-
-O = cv2.imread("./pic/lena.bmp")
-G0 = O
-G1 = cv2.pyrDown(G0)
-L0 = O - cv2.pyrUp(G1)
-RO = L0 + cv2.pyrUp(G1)
-print("O.shape = ", O.shape)
-print("RO.shape = ", RO.shape)
-result = RO - O
-result = abs(result) # 避免 负负为正
-print("原始图像O与恢复图像RO之差的绝对值和：", np.sum(result))
+# import cv2
+# import numpy as np
+#
+# O = cv2.imread("./pic/lena.bmp")
+# G0 = O
+# G1 = cv2.pyrDown(G0)
+# L0 = O - cv2.pyrUp(G1)
+# RO = L0 + cv2.pyrUp(G1)
+# print("O.shape = ", O.shape)
+# print("RO.shape = ", RO.shape)
+# result = RO - O
+# result = abs(result) # 避免 负负为正
+# print("原始图像O与恢复图像RO之差的绝对值和：", np.sum(result))
 
 # chapter 11 ending
 
+
+# chapter 12 start
+
+
+# import cv2
+#
+# o = cv2.imread('./pic/contours.bmp')
+# cv2.imshow("original", o)
+# gray = cv2.cvtColor(o, cv2.COLOR_BGR2GRAY)
+# ret, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+# contours, hierarchy = cv2.findContours(image=binary, mode=cv2.RETR_EXTERNAL, method=cv2.CHAIN_APPROX_SIMPLE)
+# o = cv2.drawContours(o, contours, -1, (0, 0, 255), 5)
+# cv2.imshow("result", o)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+# import numpy as np
+#
+# o = cv2.imread("./pic/contours.bmp")
+# cv2.imshow("original", o)
+# gray = cv2.cvtColor(o, cv2.COLOR_BGR2GRAY)
+# ret, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+# contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+# n = len(contours)
+# contoursImg = []
+# for i in range(n):
+#     temp = np.zeros(o.shape, np.uint8)
+#     contoursImg.append(temp)
+#     contoursImg[i] = cv2.drawContours(contoursImg[i], contours, i, (255, 255, 255), 5)
+#     cv2.imshow("contours[" + str(i) + "]", contoursImg[i])
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+# import numpy as np
+#
+# o = cv2.imread("./pic/loc3.jpg")
+# cv2.imshow("original", o)
+# gray = cv2.cvtColor(o, cv2.COLOR_BGR2GRAY)
+# ret, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+# # cv2.imshow("binary",binary)
+# contours, hierarchy = cv2.findContours(binary, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+# mask = np.zeros(o.shape, np.uint8)
+# mask = cv2.drawContours(mask, contours, -1, (255, 255, 255), -1)
+# cv2.imshow("mask", mask)
+# loc = cv2.bitwise_and(o, mask)
+# cv2.imshow("location", loc)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+# import numpy as np
+#
+# o = cv2.imread('./pic/moments.bmp')
+# cv2.imshow("original", o)
+# gray = cv2.cvtColor(o, cv2.COLOR_BGR2GRAY)
+# ret, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+# contours, hierarchy = cv2.findContours(binary, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+# n = len(contours)
+# contoursImg = []
+# for i in range(n):
+#     temp = np.zeros(o.shape, np.uint8)
+#     contoursImg.append(temp)
+#     contoursImg[i] = cv2.drawContours(contoursImg[i], contours, i, (255,0,0), 3)
+#     cv2.imshow("contours[" + str(i) + "]", contoursImg[i])
+# print("观察各个轮廓的矩（moments）:")
+# for i in range(n):
+#     print("轮廓" + str(i) + "的矩:\n", cv2.moments(contours[i]))
+# print("观察各个轮廓的面积:")
+# for i in range(n):
+#     print("轮廓" + str(i) + "的面积:%d" % cv2.moments(contours[i])['m00'])
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+# import numpy as np
+#
+# o = cv2.imread('./pic/contours.bmp')
+# gray = cv2.cvtColor(o, cv2.COLOR_BGR2GRAY)
+# ret, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+# contours, hierarchy = cv2.findContours(binary, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+# cv2.imshow("original", o)
+# n = len(contours)
+# contoursImg = []
+# for i in range(n):
+#     print("contours[" + str(i) + "]面积=", cv2.contourArea(contours[i]))
+#     temp = np.zeros(o.shape, np.uint8)
+#     contoursImg.append(temp)
+#     contoursImg[i] = cv2.drawContours(contoursImg[i],
+#                                       contours,
+#                                       i,
+#                                       (255, 255, 255),
+#                                       3)
+#     if cv2.contourArea(contours[i]) > 15000:
+#         cv2.imshow("contours[" + str(i) + "]", contoursImg[i])
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+# import numpy as np
+#
+# o = cv2.imread("./pic/contours0.bmp")
+# cv2.imshow("original", o)
+# gray = cv2.cvtColor(o, cv2.COLOR_BGR2GRAY)
+# ret, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+# contours, hierarchy = cv2.findContours(binary, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+# n = len(contours)
+# cntLen = []
+# for i in range(n):
+#     cntLen.append(cv2.arcLength(contours[i], True))
+#     print("第" + str(i) + "个轮廓的长度：{}".format(cntLen[i]))
+# cntLenSum = np.sum(cntLen)
+# cntLenAvr = cntLenSum / n
+# print("轮廓的总长度为：{}".format(cntLenSum))
+# print("轮廓的平均长度为：{}".format(cntLenAvr))
+# contoursImg = []
+# for i in range(n):
+#     temp = np.zeros(o.shape, np.uint8)
+#     contoursImg.append(temp)
+#     contoursImg[i] = cv2.drawContours(contoursImg[i], contours, i, (255, 255, 255), 3)
+#     if cv2.arcLength(contours[i], True) > cntLenAvr:
+#         cv2.imshow("contours[" + str(i) + "]", contoursImg[i])
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+#
+# o1 = cv2.imread('./pic/cs1.bmp')
+# gray = cv2.cvtColor(o1, cv2.COLOR_BGR2GRAY)
+# HuM1 = cv2.HuMoments(cv2.moments(gray)).flatten()
+# print("cv2.moments(gray)=\n", cv2.moments(gray))
+# print("\nHuM1=\n", HuM1)
+# print("\ncv2.moments(gray)['nu20']+cv2.moments(gray)['nu02']=%f+%f=%f\n"
+#       % (cv2.moments(gray)['nu20'], cv2.moments(gray)['nu02'],
+#          cv2.moments(gray)['nu20'] + cv2.moments(gray)['nu02']))
+# print("HuM1[0]=", HuM1[0])
+# print("\nHu[0]-(nu02+nu20)=",
+#       HuM1[0] - (cv2.moments(gray)['nu20'] + cv2.moments(gray)['nu02']))
+
+# chapter 12.1 ending
