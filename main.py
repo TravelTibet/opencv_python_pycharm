@@ -514,4 +514,112 @@
 # cv2.destroyAllWindows()
 
 # chapter 8 ending
-# chapter 9 pass
+# chapter 9,10 pass
+
+# chapter 11 start
+
+
+# import cv2
+#
+# o = cv2.imread("./pic/lena.bmp", cv2.IMREAD_GRAYSCALE)
+# r1 = cv2.pyrDown(o)
+# r2 = cv2.pyrDown(r1)
+# r3 = cv2.pyrDown(r2)
+# print("o.shape=", o.shape)
+# print("r1.shape=", r1.shape)
+# print("r2.shape=", r2.shape)
+# print("r3.shape=", r3.shape)
+# cv2.imshow("original", o)
+# cv2.imshow("r1", r1)
+# cv2.imshow("r2", r2)
+# cv2.imshow("r3", r3)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+#
+# o = cv2.imread("./pic/lenas.bmp")
+# r1 = cv2.pyrUp(o)
+# r2 = cv2.pyrUp(r1)
+# r3 = cv2.pyrUp(r2)
+# print("o.shape=", o.shape)
+# print("r1.shape=", r1.shape)
+# print("r2.shape=", r2.shape)
+# print("r3.shape=", r3.shape)
+# cv2.imshow("original", o)
+# cv2.imshow("r1", r1)
+# cv2.imshow("r2", r2)
+# cv2.imshow("r3", r3)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+#
+# o = cv2.imread("./pic/lena.bmp")
+# down = cv2.pyrDown(o)
+# up = cv2.pyrUp(down)
+# diff = up - o  # 构造 diff 图像，查看 up 与 o 的区别
+# print("o.shape=", o.shape)
+# print("up.shape=", up.shape)
+# cv2.imshow("original", o)
+# cv2.imshow("up", up)
+# cv2.imshow("difference", diff)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+#
+# o = cv2.imread("./pic/lena.bmp")
+# up = cv2.pyrUp(o)
+# down = cv2.pyrDown(up)
+# diff = down - o  # 构造 diff 图像，查看 down 与 o 的区别
+# diff1 = o - down  # 构造 diff 图像，查看 down 与 o 的区别
+# print("o.shape=", o.shape)
+# print("down.shape=", down.shape)
+# cv2.imshow("original", o)
+# cv2.imshow("down", down)
+# cv2.imshow("difference", diff)
+# cv2.imshow("difference1", diff1)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+#
+# O = cv2.imread("./pic/lena.bmp")
+# G0 = O
+# G1 = cv2.pyrDown(G0)
+# G2 = cv2.pyrDown(G1)
+# G3 = cv2.pyrDown(G2)
+# L0 = G0 - cv2.pyrUp(G1)
+# L1 = G1 - cv2.pyrUp(G2)
+# L2 = G2 - cv2.pyrUp(G3)
+# print("L0.shape = ", L0.shape)
+# print("L1.shape = ", L1.shape)
+# print("L2.shape = ", L2.shape)
+# cv2.imshow("L0", L0)
+# cv2.imshow("L1", L1)
+# cv2.imshow("L2", L2)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+import cv2
+import numpy as np
+
+O = cv2.imread("./pic/lena.bmp")
+G0 = O
+G1 = cv2.pyrDown(G0)
+L0 = O - cv2.pyrUp(G1)
+RO = L0 + cv2.pyrUp(G1)
+print("O.shape = ", O.shape)
+print("RO.shape = ", RO.shape)
+result = RO - O
+result = abs(result) # 避免 负负为正
+print("原始图像O与恢复图像RO之差的绝对值和：", np.sum(result))
+
+# chapter 11 ending
+
