@@ -772,4 +772,114 @@
 # chapter 12.1 ending
 
 
+# import cv2
+# import numpy as np
 
+# o = cv2.imread('./pic/contours.bmp')
+# cv2.imshow("original", o)
+# gray = cv2.cvtColor(o, cv2.COLOR_BGR2GRAY)
+# ret, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+# contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+# n = len(contours)
+# contoursImg = []
+# for i in range(n):
+#     temp = np.zeros(o.shape, np.uint8)
+#     contoursImg.append(temp)
+#     contoursImg[i] = cv2.drawContours(
+#         contoursImg[i], contours, i, (255, 255, 255), 5)
+#     cv2.imshow("contours[" + str(i) + "]", contoursImg[i])
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+
+# import cv2
+# import numpy as np
+#
+# o = cv2.imread('./pic/moments.bmp')
+# cv2.imshow("original", o)
+# gray = cv2.cvtColor(o, cv2.COLOR_BGR2GRAY)
+# ret, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+# contours, hierarchy = cv2.findContours(binary, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+# n = len(contours)
+# contoursImg = []
+# for i in range(n):
+#     temp = np.zeros(o.shape, np.uint8)
+#     contoursImg.append(temp)
+#     contoursImg[i] = cv2.drawContours(contoursImg[i], contours, i, (255, 255, 255), 3)
+#     cv2.imshow("contours[" + str(i) + "]", contoursImg[i])
+# print("观察各个轮廓的矩（moments）:")
+# for i in range(n):
+#     print("轮廓" + str(i) + "的矩:\n", cv2.moments(contours[i]))
+#     print("观察各个轮廓的面积:")
+# for i in range(n):
+#     print("轮廓" + str(i) + "的面积:%d" % cv2.moments(contours[i])['m00'])
+# cv2.waitKey()
+# cv2.destroyAllWindows()
+
+# import cv2
+#
+# o1 = cv2.imread('./pic/cs1.bmp')
+# o2 = cv2.imread('./pic/cs2.bmp')
+# o3 = cv2.imread('./pic/cc.bmp')
+# gray1 = cv2.cvtColor(o1, cv2.COLOR_BGR2GRAY)
+# gray2 = cv2.cvtColor(o2, cv2.COLOR_BGR2GRAY)
+# gray3 = cv2.cvtColor(o3, cv2.COLOR_BGR2GRAY)
+# ret, binary1 = cv2.threshold(gray1, 127, 255, cv2.THRESH_BINARY)
+# ret, binary2 = cv2.threshold(gray2, 127, 255, cv2.THRESH_BINARY)
+# ret, binary3 = cv2.threshold(gray3, 127, 255, cv2.THRESH_BINARY)
+# contours1, hierarchy1 = cv2.findContours(binary1, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+# contours2, hierarchy2 = cv2.findContours(binary2, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+# contours3, hierarchy3 = cv2.findContours(binary3, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+# cnt1 = contours1[0]
+# cnt2 = contours2[0]
+# cnt3 = contours3[0]
+# ret0 = cv2.matchShapes(cnt1, cnt1, 1, 0.0)
+# ret1 = cv2.matchShapes(cnt1, cnt2, 1, 0.0)
+# ret2 = cv2.matchShapes(cnt1, cnt3, 1, 0.0)
+# print("相同图像的 matchShape=", ret0)
+# print("相似图像的 matchShape=", ret1)
+# print("不相似图像的 matchShape=", ret2)
+
+
+import cv2
+
+# ----------------读取并显示原始图像-------------------------------
+o = cv2.imread('./pic/cc.bmp')
+cv2.imshow("original", o)
+# ----------------获取轮廓-------------------------------
+gray = cv2.cvtColor(o, cv2.COLOR_BGR2GRAY)
+ret, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+contours, hierarchy = cv2.findContours(binary, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+# ----------------epsilon=0.1*周长-------------------------------
+adp = o.copy()
+epsilon = 0.1 * cv2.arcLength(contours[0], True)
+approx = cv2.approxPolyDP(contours[0], epsilon, True)
+adp = cv2.drawContours(adp, [approx], 0, (0, 0, 255), 2)
+cv2.imshow("result0.1", adp)
+# ----------------epsilon=0.09*周长-------------------------------
+adp = o.copy()
+epsilon = 0.09 * cv2.arcLength(contours[0], True)
+approx = cv2.approxPolyDP(contours[0], epsilon, True)
+adp = cv2.drawContours(adp, [approx], 0, (0, 0, 255), 2)
+cv2.imshow("result0.09", adp)
+# ----------------epsilon=0.055*周长-------------------------------
+adp = o.copy()
+epsilon = 0.055 * cv2.arcLength(contours[0], True)
+approx = cv2.approxPolyDP(contours[0], epsilon, True)
+adp = cv2.drawContours(adp, [approx], 0, (0, 0, 255), 2)
+cv2.imshow("result0.055", adp)
+# ----------------epsilon=0.05*周长-------------------------------
+adp = o.copy()
+epsilon = 0.05 * cv2.arcLength(contours[0], True)
+approx = cv2.approxPolyDP(contours[0], epsilon, True)
+adp = cv2.drawContours(adp, [approx], 0, (0, 0, 255), 2)
+cv2.imshow("result0.05", adp)
+# ----------------epsilon=0.02*周长-------------------------------
+adp = o.copy()
+epsilon = 0.02 * cv2.arcLength(contours[0], True)
+approx = cv2.approxPolyDP(contours[0], epsilon, True)
+adp = cv2.drawContours(adp, [approx], 0, (0, 0, 255), 2)
+cv2.imshow("result0.02", adp)
+# ----------------等待释放窗口-------------------------------
+cv2.waitKey()
+cv2.destroyAllWindows()
