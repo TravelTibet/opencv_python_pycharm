@@ -1,3 +1,5 @@
+# 基于opencv-python的初学者实战过程，无需理会
+
 - 快速生成 requiement.txt 命令
 ``` pip
 pip freeze > requirements.txt
