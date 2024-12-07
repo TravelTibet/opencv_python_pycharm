@@ -946,4 +946,75 @@
 
 # chapter 13.3 ending
 
-print("测试效果")
+# print("测试效果")
+
+# chapter 13.4 start
+# import cv2
+# import matplotlib.pyplot as plt
+#
+# img = cv2.imread("./pic/equ.bmp",cv2.IMREAD_GRAYSCALE)
+# equ = cv2.equalizeHist(img)
+# plt.figure("subplot实例")
+# plt.subplot(121),plt.hist(img.ravel(),256)
+# plt.subplot(122),plt.hist(equ.ravel(),256)
+
+# import cv2
+# import matplotlib.pyplot as plt
+# img = cv2.imread('./pic/equ.bmp',cv2.IMREAD_GRAYSCALE)
+# equ = cv2.equalizeHist(img)
+# plt.figure("subplot 示例")
+# plt.subplot(121),plt.hist(img.ravel(),256)
+# plt.subplot(122),plt.hist(equ.ravel(),256)
+# plt.show()
+
+# import cv2
+# import matplotlib.pyplot as plt
+#
+# img = cv2.imread('./pic/girl.bmp')
+# imgRGB=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+# plt.figure("显示结果")
+# plt.subplot(121)
+# plt.imshow(img),plt.axis('off')
+# plt.subplot(122)
+# plt.imshow(imgRGB),plt.axis('off')
+# plt.show()
+
+
+# import cv2
+# from matplotlib import pyplot as plt
+#
+# o = cv2.imread("./pic/girl.bmp")
+# g = cv2.cvtColor(o, cv2.COLOR_BGR2GRAY)
+# plt.figure("灰度图像演示")
+# plt.subplot(2, 2, 1)
+# plt.imshow(o)
+# plt.axis('off')
+# plt.subplot(2, 2, 2)
+# plt.imshow(o, cmap=plt.cm.gray)
+# plt.axis('off')
+# plt.subplot(223)
+# plt.imshow(g)
+# plt.axis('off')
+# plt.subplot(224)
+# plt.imshow(g,cmap=plt.cm.gray)
+# plt.axis('off')
+# plt.show()
+
+
+# import cv2
+# import matplotlib.pyplot as plt
+#
+# o = cv2.imread('./pic/8.bmp')
+# g = cv2.cvtColor(o, cv2.COLOR_BGR2GRAY)
+# plt.figure("灰度图像显示演示")
+# plt.subplot(221)
+# plt.imshow(g, cmap=plt.cm.gray)
+# plt.subplot(222)
+# plt.imshow(g, cmap=plt.cm.gray_r)
+# plt.subplot(223)
+# plt.imshow(g, cmap='gray')
+# plt.subplot(224)
+# plt.imshow(g, cmap='gray_r')
+# plt.show()
+
+#chapter 13 ending
