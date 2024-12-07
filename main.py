@@ -1017,4 +1017,70 @@
 # plt.imshow(g, cmap='gray_r')
 # plt.show()
 
-#chapter 13 ending
+# chapter 13 ending
+
+# chapter 14 start
+
+# import cv2
+# import numpy as np
+# import matplotlib.pyplot as plt
+#
+# img = cv2.imread('./pic/lena.bmp', 0)
+# f = np.fft.fft2(img)
+# fshift = np.fft.fftshift(f)
+# magnitude_spectrum = 20 * np.log(np.abs(fshift))
+# plt.subplot(131)
+# plt.imshow(img, cmap='gray')
+# plt.title('original')
+# plt.axis('off')
+# plt.subplot(132)
+# plt.imshow(magnitude_spectrum, cmap='gray')
+# plt.title('result')
+# plt.axis('off')
+# plt.subplot(133)
+# magnitude_spectrum1 = 20 * np.log(np.abs(f))
+# plt.imshow(magnitude_spectrum1, cmap='gray')
+# plt.title('original f')
+# plt.axis('off')
+# plt.show()
+
+
+# import cv2
+# import numpy as np
+# import matplotlib.pyplot as plt
+#
+# img = cv2.imread('./pic/boat.bmp', 0)
+# f = np.fft.fft2(img)
+# fshift = np.fft.fftshift(f)
+# ishift = np.fft.ifftshift(fshift)
+# iimg = np.fft.ifft2(ishift)
+# # print(iimg)
+# iimg = np.abs(iimg)
+# # print(iimg)
+# plt.subplot(121), plt.imshow(img, cmap='gray')
+# plt.title('original'), plt.axis('off')
+# plt.subplot(122), plt.imshow(iimg, cmap='gray')
+# plt.title('iimg'), plt.axis('off')
+# plt.show()
+
+
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+
+img = cv2.imread('./pic/boat.bmp', 0)
+f = np.fft.fft2(img)
+fshift = np.fft.fftshift(f)
+rows, cols = img.shape
+crow, ccol = int(rows / 2), int(cols / 2)
+fshift[crow - 30:crow + 30, ccol - 30:ccol + 30] = 0
+ishift = np.fft.ifftshift(fshift)
+iimg = np.fft.ifft2(ishift)
+iimg = np.abs(iimg)
+plt.subplot(121), plt.imshow(img, cmap='gray')
+plt.title('original'), plt.axis('off')
+plt.subplot(122), plt.imshow(iimg, cmap='gray')
+plt.title('iimg'), plt.axis('off')
+plt.show()
+
+#chapter 14 ending
